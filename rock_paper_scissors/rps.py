@@ -24,6 +24,8 @@ import sys
 
 def rock_paper_scissors(n):
     rps = [['rock'], ['paper'], ['scissors']]
+    if n == 0:
+      return [[]]
     if n == 1:
         return rps
     else:

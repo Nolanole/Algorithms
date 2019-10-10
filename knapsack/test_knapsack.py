@@ -82,6 +82,8 @@ class Test(unittest.TestCase):
 
     file_contents.close()
 
+    print(self.large_1_items)
+
   def cleanUp_large(self):
     del self.large_1_items
 
