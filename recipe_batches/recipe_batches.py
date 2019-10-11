@@ -1,9 +1,31 @@
 #!/usr/bin/python
 
 import math
+import numpy as np
 
 def recipe_batches(recipe, ingredients):
-  pass 
+  np_recipe = []
+  np_ingredients = []
+
+  keys = list(recipe.keys())
+  for key in keys:
+    np_recipe.append(recipe[key])
+    try:
+      np_ingredients.append(ingredients[key])
+    except KeyError:
+      return 0
+
+  np_recipe = np.array(np_recipe)
+  np_ingredients = np.array(np_ingredients)
+  count = 0
+  enough = True
+  while enough:
+    np_ingredients = np_ingredients - np_recipe
+    if min(np_ingredients) >= 0:
+        count += 1
+    else:
+        enough = False
+  return count
 
 
 if __name__ == '__main__':

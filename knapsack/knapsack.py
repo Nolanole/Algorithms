@@ -6,7 +6,18 @@ from collections import namedtuple
 Item = namedtuple('Item', ['index', 'size', 'value'])
 
 def knapsack_solver(items, capacity):
-  pass
+    knapsack = []
+    value = 0
+    ratios = [[item.value / item.size, item.size, item.value, item.index] for item in items]
+    ratios.sort()
+    ratios.reverse()
+    for item in ratios:
+        if capacity - item[1] >= 0:
+            knapsack.append(item[3])
+            value += item[2]
+            capacity -= item[1]
+    knapsack.sort()
+    return {'Value': value, 'Chosen': knapsack}
   
 
 if __name__ == '__main__':
